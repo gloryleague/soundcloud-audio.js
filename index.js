@@ -158,7 +158,9 @@ SoundCloud.prototype.pause = function () {
 
 SoundCloud.prototype.stop = function () {
     this.audio.pause();
-    this.audio.currentTime = 0;
+    if (this.audio.readyState) {
+        this.audio.currentTime = 0;
+    }
     this.playing = false;
 };
 
